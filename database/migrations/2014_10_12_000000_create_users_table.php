@@ -16,10 +16,20 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('role')->comment('0 - user, 1 - writer');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+            array(
+                'name' => 'admin',
+                'email' => 'admin@admin.com',
+                'role' => 1,
+                'password' => Hash::make('123qwerty456')
+            )
+        );
     }
 
     /**
