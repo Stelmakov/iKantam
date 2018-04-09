@@ -30,7 +30,7 @@
                         <li><a href="/login">Login</a></li>
                         <li><a href="/register">Register</a></li>
                     @else
-                        <li><a href="{{ Auth::logout() }}">Sign out</a></li>
+                        <li><a href="/logout">Sign out</a></li>
                     @endif
                 </ul>
 

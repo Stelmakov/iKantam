@@ -12,7 +12,7 @@ class Article extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'content'
+        'name', 'content', 'text', 'slug'
     ];
 
     /**
@@ -23,4 +23,9 @@ class Article extends Authenticatable
     protected $hidden = [
         'user_id'
     ];
+
+	public function user()
+	{
+		return $this->belongsTo('App\User');
+	}
 }

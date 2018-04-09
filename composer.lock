@@ -4,8 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b1485987e7c5949da82435d403e52e8",
+    "content-hash": "71da1c90537d5332a9d3bd6d0a3a1d6e",
     "packages": [
+        {
+            "name": "alexusmai/ruslug",
+            "version": "0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexusmai/ruslug.git",
+                "reference": "aedcde469007e3fcfca9a8ba69fbeba464dea292"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexusmai/ruslug/zipball/aedcde469007e3fcfca9a8ba69fbeba464dea292",
+                "reference": "aedcde469007e3fcfca9a8ba69fbeba464dea292",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Alexusmai\\Ruslug\\RuslugServiceProvider"
+                    ],
+                    "aliases": {
+                        "Slug": "Alexusmai\\Ruslug\\RuslugFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Alexusmai\\Ruslug\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "alexusmai",
+                    "email": "alexusmai@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel 5 RuSlug, Transliteration RU -> ENG",
+            "homepage": "https://github.com/alexusami/ruslug",
+            "keywords": [
+                "laravel 5",
+                "ru",
+                "slug"
+            ],
+            "time": "2018-03-16T16:15:26+00:00"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.2.0",

@@ -1,10 +1,15 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'IndexController@index');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+
+Route::get('/add-article','ArticleController@addArticle')->middleware('isWriter');
+Route::post('/add-article','ArticleController@addArticle')->middleware('isWriter');
+
+Route::get('/edit-article/{slug}','ArticleController@editArticle')->middleware('isWriter');
+Route::post('/edit-article/{slug}','ArticleController@editArticle')->middleware('isWriter');
+
+
