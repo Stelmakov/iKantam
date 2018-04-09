@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Article;
+use App\Comment;
 use Validator;
 
 class ArticleController extends Controller
@@ -83,5 +84,28 @@ class ArticleController extends Controller
 
 		return view('articles.edit', ['article' => $article]);
 	}
+
+	public function showArticle(Request $request, $slug){
+        if ($request->isMethod('post')) {
+            $this->validate($request, [
+                'text' => 'required'
+            ]);
+
+            $comment = new Comment;
+            $comment->content = $request->text;
+            $comment->user_id = Auth::user()->id;
+            $article = Article::whereSlug($slug)->first();
+            $comment->article_id = $article->id;
+            $comment->save();
+        } else{
+            $article = Article::whereSlug($slug)->first();
+        }
+
+        if (!$article){
+            return response()->view('errors.404');
+        }
+        $comments = $article->comments()->get();
+        return view('articles.show', ['article' => $article, 'comments' => $comments]);
+    }
 
 }

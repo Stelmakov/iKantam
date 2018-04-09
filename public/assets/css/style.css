@@ -1,3 +1,15 @@
 .hint {
     float:right;
 }
+.min-height-300 {
+    min-height:300px;
+}
+.margin-top-20 {
+    margin-top:20px;
+}
+.red-color {
+    color:red;
+}
+.green-color {
+    color:green;
+}

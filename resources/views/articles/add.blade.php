@@ -18,10 +18,10 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="content" name="text" value="{{ old('content') }}" class="materialize-textarea validate {{ $errors->has('content') ? ' invalid' : '' }}" data-length="440"></textarea>
+                    <textarea id="content" name="text" class="materialize-textarea validate {{ $errors->has('content') ? ' invalid' : '' }}" data-length="440">{{ old('text') }}</textarea>
                     <label for="Content">Content</label>
-                    @if ($errors->has('content'))
-                        <span class="helper-text">{{ $errors->first('content') }}</span>
+                    @if ($errors->has('text'))
+                        <span class="helper-text">{{ $errors->first('text') }}</span>
                     @endif
                 </div>
             </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="submit" class="btn" value="Save">
+                    <input type="submit" class="btn" value="Save">
                 </div>
             </div>
         </form>

@@ -16,7 +16,7 @@
                                 <div class="col s12">
                                     <h5>{{ $article->name }}</h5>
                                     <span class="black-text center">
-                                    {!!  str_limit($article->content , 40 , '...') !!}
+                                    {!!  str_limit(html_entity_decode($article->content) , 40 , '...') !!}
                                     </span>
                                 </div>
                                 <div class="col s12">
