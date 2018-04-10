@@ -64,14 +64,17 @@ class ArticleController extends Controller
 				'name' => 'required|max:255',
 				'text' => 'required',
 			]);
-			$slug = \Slug::make($request->slug);
+			$article =  Article::whereSlug($slug)->first();
+			$slug = \Slug::make($request->name);
 			$i = 1;
-			while (Article::whereSlug($slug)->exists()){
-				$slug = \Slug::make($request->name . '-' . $i);
-				$i++;
+			if (Article::whereSlug($slug)->exists()){
+				while (Article::whereSlug($slug)->exists()){
+					$slug = \Slug::make($request->name . '-' . $i);
+					$i++;
+				}
 			}
-			$article = new Article;
-			if (!\File::exists(public_path().$request->file_path)){
+
+			if (!\File::exists(public_path().$request->file_path) && $request->file('img')){
 				$file = $request->file('img');
 				$destinationPath =  public_path().'/img/';
 				$filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'png';
