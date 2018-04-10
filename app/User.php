@@ -24,6 +24,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+	/**
+	 * Determines user role
+	 *
+	 * @return boolean
+	 */
     public function isAdmin() {
         return (bool) $this->role;
     }

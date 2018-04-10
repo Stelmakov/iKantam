@@ -13,3 +13,22 @@
 .green-color {
     color:green;
 }
+.margin-bottom-40 {
+    margin-bottom:40px;
+}
+.adminButtons {
+    position:absolute;
+    right:0px;
+    top:0px;
+    z-index:100;
+}
+.pagination li.active {
+    width:30px;
+}
+.pagination li span{
+    color: #444;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    line-height: 30px;
+}

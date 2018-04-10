@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	$('.sidenav').sidenav();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -51,5 +51,23 @@ $(document).ready(function(){
         });
         return false;
     });
+    $('.deleteArticle').on('click',function(){
+	    var articleId = $(this).attr('id');
+
+	    $.ajax({
+
+		    type: 'POST',
+		    url: '/article/delete',
+		    data: {id: articleId },
+		    dataType: 'json',
+		    success: function (data) {
+			    $('#' + articleId).parents('.card').remove();
+		    },
+		    error: function (data) {
+			    console.log('Error:', data);
+		    }
+	    });
+	    return false;
+    })
 
 });

@@ -18,7 +18,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="content" name="text" class="materialize-textarea validate {{ $errors->has('content') ? ' invalid' : '' }}" data-length="440">{{ old('text') }}</textarea>
+                    <textarea id="content" name="text" class="materialize-textarea validate {{ $errors->has('content') ? ' invalid' : '' }}" >{{ old('text') }}</textarea>
                     <label for="Content">Content</label>
                     @if ($errors->has('text'))
                         <span class="helper-text">{{ $errors->first('text') }}</span>

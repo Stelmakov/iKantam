@@ -12,7 +12,7 @@ class Article extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'content', 'text', 'slug'
+        'name', 'content', 'slug'
     ];
 
     /**
@@ -24,11 +24,21 @@ class Article extends Authenticatable
         'user_id'
     ];
 
+	/**
+	 * Gets user by user_id
+	 *
+	 * @return User
+	 */
 	public function user(){
 
 		return $this->belongsTo('App\User');
 	}
 
+	/**
+	 * Gets comments for current article
+	 *
+	 * @return Comment
+	 */
 	public function comments() {
 
 	    return $this->hasMany('App\Comment');

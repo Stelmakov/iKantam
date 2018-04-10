@@ -16,8 +16,11 @@ Route::post('/edit-article/{slug}','ArticleController@editArticle')->middleware(
 Route::get('/articles/{slug}','ArticleController@showArticle');
 Route::post('/articles/{slug}','ArticleController@showArticle')->middleware('auth');
 
+Route::post('/article/delete','ArticleController@deleteArticle')->middleware('isWriter');
+
 
 Route::post('/comments/delete','CommentController@delete')->middleware('isWriter');
 Route::post('/comments/edit','CommentController@edit')->middleware('isWriter');
+
 
 
