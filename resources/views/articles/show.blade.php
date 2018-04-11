@@ -32,7 +32,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="submit" class="btn" value="Save">
+                            <input type="submit" class="btn" value="Send">
                         </div>
                     </div>
                 </form>
@@ -41,7 +41,7 @@
         @foreach( $comments as $comment)
             <div class="col s12 m5 ">
                 <div class="row card-panel">
-                    @if (!Auth::guest() && Auth::user()->isAdmin())
+                    @if (!Auth::guest() && ($comment->user->id == Auth::user()->id || Auth::user()->isAdmin()))
                         <div class="right">
                             <a href="#" class="editComment green-color" id="{{ $comment->id }}">Edit</a>
                             <a href="#" class="deleteComment red-color" id="{{ $comment->id }}">Delete</a>
