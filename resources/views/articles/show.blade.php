@@ -42,7 +42,7 @@
             <div class="col s12 m5 ">
                 <div class="row card-panel">
                     @if (!Auth::guest() && ($comment->user->id == Auth::user()->id || Auth::user()->isAdmin()))
-                        <div class="right">
+                        <div class="right" style="margin-left:30px;">
                             <a href="#" class="editComment green-color" id="{{ $comment->id }}">Edit</a>
                             <a href="#" class="deleteComment red-color" id="{{ $comment->id }}">Delete</a>
                         </div>
