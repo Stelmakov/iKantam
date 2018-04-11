@@ -8,7 +8,8 @@
             @foreach ($articles as $article)
                 <div class="col s12 m6 l6 ">
                     <div class="card">
-                        @if (!Auth::guest() && Auth::user()->isAdmin())
+
+                        @if (!Auth::guest() && ($article->user->id == Auth::user()->id || Auth::user()->isAdmin()))
                             <div class="adminButtons">
                                 <a href="/edit-article/{{ $article->slug }}" class="green-color" >Edit</a>
                                 <a href="#" class="deleteArticle red-color" id="{{ $article->id }}">Delete</a>

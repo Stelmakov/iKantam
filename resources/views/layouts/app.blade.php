@@ -22,7 +22,7 @@
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul  class="left hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
-                @if (!Auth::guest() && Auth::user()->isAdmin())
+                @if (!Auth::guest())
                     <li><a href="/add-article">Add article</a></li>
                 @endif
             </ul>
@@ -38,7 +38,7 @@
         </div>
         <ul class="sidenav" id="mobile">3
             <li><a href="/">Home</a></li>
-            @if (!Auth::guest() && Auth::user()->isAdmin())
+            @if (!Auth::guest())
                 <li><a href="/add-article">Add article</a></li>
             @endif
             @if (Auth::guest())

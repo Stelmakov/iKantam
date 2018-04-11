@@ -32,4 +32,15 @@ class User extends Authenticatable
     public function isAdmin() {
         return (bool) $this->role;
     }
+
+    public function articles(){
+
+	    return $this->hasMany('App\Article');
+    }
+
+    public function hasArticle($articleId) {
+
+    	return  User::find($this->id)->articles;
+    }
+
 }

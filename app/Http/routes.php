@@ -7,11 +7,11 @@ Route::get('/articles', 'IndexController@index');
 Route::auth();
 
 
-Route::get('/add-article','ArticleController@addArticle')->middleware('isWriter');
-Route::post('/add-article','ArticleController@addArticle')->middleware('isWriter');
+Route::get('/add-article','ArticleController@addArticle')->middleware('auth', 'hasArticle');
+Route::post('/add-article','ArticleController@addArticle')->middleware('auth', 'hasArticle');
 
-Route::get('/edit-article/{slug}','ArticleController@editArticle')->middleware('isWriter');
-Route::post('/edit-article/{slug}','ArticleController@editArticle')->middleware('isWriter');
+Route::get('/edit-article/{slug}','ArticleController@editArticle')->middleware('auth', 'hasArticle');
+Route::post('/edit-article/{slug}','ArticleController@editArticle')->middleware('auth', 'hasArticle');
 
 Route::get('/articles/{slug}','ArticleController@showArticle');
 Route::post('/articles/{slug}','ArticleController@showArticle')->middleware('auth');
