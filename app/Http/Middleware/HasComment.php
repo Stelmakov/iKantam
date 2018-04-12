@@ -19,7 +19,7 @@ class HasComment
 	{
 
 		if (!isset($request->id)) {
-			return response('Forbidden.', 403);
+			return response('Not Found', 404);
 		}
 		$comment = Comment::whereId($request->id)->first();
 		if ($comment->user_id != \Auth::user()->id && \Auth::user()->role != 1) {

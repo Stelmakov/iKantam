@@ -17,10 +17,11 @@ class HasArticle
 	 */
 	public function handle($request, Closure $next)
 	{
-		$article = Article::whereSlug($request->slug)->first();
+		$article = Article::where('slug',$request->slug)->orWhere('id', $request->id)->first();
 		if (!$article) {
-			$article = Article::whereId($request->id)->first();
+			return response('Not Found', 404);
 		}
+
 
 		if ($article->user_id != \Auth::user()->id && \Auth::user()->role != 1) {
 			return response('Forbidden.', 403);
