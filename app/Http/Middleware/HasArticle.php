@@ -17,8 +17,12 @@ class HasArticle
 	 */
 	public function handle($request, Closure $next)
 	{
-		$article = Article::whereSlug($request->slug);
-		if ($article->user_id != $request->user()->id && $request->user()->role != 1) {
+		$article = Article::whereSlug($request->slug)->first();
+		if (!$article) {
+			$article = Article::whereId($request->id)->first();
+		}
+
+		if ($article->user_id != \Auth::user()->id && \Auth::user()->role != 1) {
 			return response('Forbidden.', 403);
 		}
 

@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Comment;
 
-class CheckRole
+class HasComment
 {
 	/**
 	 * Обработка входящего запроса.
@@ -16,7 +17,12 @@ class CheckRole
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($request->user()->role != 1) {
+
+		if (!isset($request->id)) {
+			return response('Forbidden.', 403);
+		}
+		$comment = Comment::whereId($request->id)->first();
+		if ($comment->user_id != \Auth::user()->id && \Auth::user()->role != 1) {
 			return response('Forbidden.', 403);
 		}
 
